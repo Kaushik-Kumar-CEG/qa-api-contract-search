@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: Apache-2.0
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qa-api-contract-search"
+version = "0.1.0"
+description = "MCP server for internal API endpoint contract rules"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{ name = "Kaushik Kumar" }]
+dependencies = ["mcp>=1.12.4,<2"]
+
+[project.scripts]
+qa-api-contract-search = "qa_api_contract_search.server:main"
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qa_api_contract_search"]
